@@ -1,21 +1,15 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+import ImageCapture from './components/ImageCapture'
 
 function App() {
-  const [health, setHealth] = useState<string>('Checking...')
-
-  useEffect(() => {
-    axios.get(`${import.meta.env.VITE_API_URL}/health`)
-      .then(res => setHealth(JSON.stringify(res.data)))
-      .catch(() => setHealth('Could not reach server'))
-  }, [])
+  const handleSubmit = (image: Blob, manualContext: string) => {
+    // Step 1.2 will wire this to POST /api/jobs
+    console.log('Image ready to submit:', image.size, 'bytes')
+    console.log('Manual context:', manualContext)
+  }
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-3xl font-bold text-gray-800">Clipbook — Coming Soon</h1>
-        <p className="mt-4 text-gray-500">{health}</p>
-      </div>
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+      <ImageCapture onSubmit={handleSubmit} />
     </div>
   )
 }
