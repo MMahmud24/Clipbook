@@ -7,3 +7,4 @@ dist/
 !.env.example
 *.mp4
 temp_renders/
+server/gcp-key.json
