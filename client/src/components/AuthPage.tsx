@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useAuth } from '../context/AuthContext'
+import Logo from './Logo'
 
 interface AuthPageProps {
   onBack: () => void
@@ -67,6 +68,7 @@ export default function AuthPage({ onBack }: AuthPageProps) {
         </button>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <Logo size={28} />
           <span style={{ color: '#fff', fontWeight: 800, fontSize: 16, letterSpacing: '-0.025em' }}>ClipBook</span>
         </div>
 
@@ -96,7 +98,7 @@ export default function AuthPage({ onBack }: AuthPageProps) {
           </h2>
           <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.38)', marginBottom: 32 }}>
             {mode === 'login'
-              ? 'Sign in to continue to Clipbook.'
+              ? 'Sign in to continue to ClipBook.'
               : 'Start turning manuals into video tutorials.'}
           </p>
 

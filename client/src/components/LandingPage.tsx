@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import Logo from './Logo'
 
 interface LandingPageProps {
   onGetStarted: () => void
@@ -174,6 +174,7 @@ export default function LandingPage({ onGetStarted, onSignIn }: LandingPageProps
       }}>
         {/* Logo */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
+          <Logo size={30} />
           <span style={{ color: '#fff', fontWeight: 800, fontSize: 17, letterSpacing: '-0.025em' }}>ClipBook</span>
         </div>
 
