@@ -1,3 +1,249 @@
+@import '@fontsource/plus-jakarta-sans/300.css';
+@import '@fontsource/plus-jakarta-sans/400.css';
+@import '@fontsource/plus-jakarta-sans/500.css';
+@import '@fontsource/plus-jakarta-sans/600.css';
+@import '@fontsource/plus-jakarta-sans/700.css';
+@import '@fontsource/plus-jakarta-sans/800.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --cream: #EDE8E0;
+  --cream-dark: #E4DDD3;
+  --navy: #060A15;
+  --blue: #2563EB;
+  --blue-mid: #3B82F6;
+  --blue-pale: #EFF6FF;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--cream);
+  color: #0F172A;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: #C8C0B4; border-radius: 3px; }
+
+/* ─── Orb glow ─── */
+.hero-orb {
+  position: absolute;
+  top: -8%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 700px;
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    rgba(59, 130, 246, 0.52) 0%,
+    rgba(37, 99, 235, 0.28) 35%,
+    rgba(29, 78, 216, 0.08) 65%,
+    transparent 75%
+  );
+  filter: blur(1px);
+  pointer-events: none;
+}
+
+/* ─── Badge / pill ─── */
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 999px;
+  padding: 7px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 0.01em;
+  backdrop-filter: blur(6px);
+}
+
+/* ─── CTA pill (dark, with arrow) ─── */
+.cta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-radius: 999px;
+  padding: 12px 22px 12px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.18s, border-color 0.18s;
+  backdrop-filter: blur(8px);
+  text-decoration: none;
+}
+.cta-pill:hover {
+  background: rgba(255,255,255,0.16);
+  border-color: rgba(255,255,255,0.28);
+}
+.cta-pill .arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px; height: 26px;
+  background: #fff;
+  border-radius: 50%;
+  color: #060A15;
+  flex-shrink: 0;
+}
+
+/* ─── Nav pill button (outlined) ─── */
+.nav-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  border-radius: 999px;
+  padding: 9px 20px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.9);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  background: transparent;
+}
+.nav-cta:hover {
+  border-color: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.06);
+}
+
+/* ─── Card styles ─── */
+.tool-card {
+  background: #0E1420;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px;
+  padding: 28px 26px;
+  transition: border-color 0.2s, transform 0.2s;
+  cursor: default;
+}
+.tool-card:hover {
+  border-color: rgba(59,130,246,0.3);
+  transform: translateY(-2px);
+}
+
+/* ─── Cream section card ─── */
+.cream-card {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.07);
+  border-radius: 20px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.05);
+}
+
+/* ─── Auth input ─── */
+.auth-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-family: inherit;
+  background: rgba(255,255,255,0.06);
+  border: 1.5px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  color: #fff;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.auth-input::placeholder { color: rgba(255,255,255,0.28); }
+.auth-input:focus { border-color: rgba(59,130,246,0.7); }
+
+/* ─── App input ─── */
+.app-input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #fff;
+  border: 1.5px solid rgba(0,0,0,0.1);
+  border-radius: 12px;
+  color: #111;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.app-input:focus {
+  border-color: #2563EB;
+  box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+}
+
+/* ─── Primary button ─── */
+.btn-blue {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #2563EB;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  border: none;
+  border-radius: 12px;
+  padding: 13px 24px;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+.btn-blue:hover { background: #1D4ED8; transform: translateY(-1px); }
+.btn-blue:active { transform: none; }
+.btn-blue:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+/* ─── Outline button ─── */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  color: #374151;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  border: 1.5px solid rgba(0,0,0,0.12);
+  border-radius: 12px;
+  padding: 12px 22px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+.btn-outline:hover { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.2); }
+
+/* ─── Loading dots ─── */
+@keyframes dot-bounce {
+  0%, 80%, 100% { transform: scale(0.65); opacity: 0.35; }
+  40%            { transform: scale(1);    opacity: 1; }
+}
+.dot-1 { animation: dot-bounce 1.3s ease-in-out infinite; }
+.dot-2 { animation: dot-bounce 1.3s ease-in-out 0.18s infinite; }
+.dot-3 { animation: dot-bounce 1.3s ease-in-out 0.36s infinite; }
+
+/* ─── Sparkle decoration ─── */
+.sparkle {
+  position: absolute;
+  color: rgba(255,255,255,0.35);
+  font-size: 22px;
+  font-weight: 300;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ─── Step progress dot ─── */
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0 rgba(37,99,235,0.45); }
+  70%  { box-shadow: 0 0 0 8px rgba(37,99,235,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,99,235,0); }
+}
+.step-active-dot {
+  animation: pulse-ring 1.8s ease-out infinite;
+}

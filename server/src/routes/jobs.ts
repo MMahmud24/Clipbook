@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { uploadToR2 } from '../lib/r2'
 import { supabase } from '../lib/supabase'
 import { runJob } from '../orchestrator'
+import { requireAuth, AuthenticatedRequest } from '../middleware/auth'
 
 const router = Router()
 const upload = multer({
@@ -13,7 +14,9 @@ const upload = multer({
 })
 
 // POST /api/jobs — accept image, compress, upload to R2, create job
-router.post('/', upload.single('image'), async (req: Request, res: Response) => {
+router.post('/', requireAuth, upload.single('image'), async (req: Request, res: Response) => {
+  const userId = (req as AuthenticatedRequest).userId
+
   // Validate file present
   if (!req.file) {
     res.status(400).json({ error: 'No image provided' })
@@ -43,6 +46,7 @@ router.post('/', upload.single('image'), async (req: Request, res: Response) => 
   // Insert job row
   const { error } = await supabase.from('jobs').insert({
     id: jobId,
+    user_id: userId,
     status: 'pending',
     input_image_url: inputImageUrl,
     manual_context: manualContext || null,
@@ -61,7 +65,7 @@ router.post('/', upload.single('image'), async (req: Request, res: Response) => 
   runJob(jobId, inputImageUrl, manualContext)
 })
 
-// GET /api/jobs/:id — poll job status
+// GET /api/jobs/:id — poll job status (public — job IDs are unguessable UUIDs)
 router.get('/:id', async (req: Request, res: Response) => {
   const { data, error } = await supabase
     .from('jobs')
