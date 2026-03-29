@@ -18,13 +18,13 @@ export async function generateScript(ocrText: string, detectedObjects: string[],
         systemInstruction: SCRIPT_SYSTEM_PROMPT,
         generationConfig: {
             temperature: 0.2,
-            maxOutputTokens: 4096,
+            maxOutputTokens: 8192,
             responseMimeType: 'application/json',
         },
     })
 
     const userMessage = `Product: ${manualContext || 'Unknown'}
-    
+
     Detected text:
     ${ocrText}
 
@@ -38,23 +38,44 @@ export async function generateScript(ocrText: string, detectedObjects: string[],
     try {
         const response = await model.generateContent(userMessage)
         const text = response.response.text()
-        const parsed = JSON.parse(text)
+
+        // Attempt to parse — if JSON is truncated, retry with instruction to keep it short
+        let parsed: unknown
+        try {
+            parsed = JSON.parse(text)
+        } catch {
+            retryCount = 1
+            const retryMessage = userMessage + `\n\nYour previous response was truncated and produced invalid JSON. Respond with valid JSON only. Keep scenes to 4 or fewer and keep all string values short.`
+            const retryResponse = await model.generateContent(retryMessage)
+            const retryText = retryResponse.response.text()
+            try {
+                parsed = JSON.parse(retryText)
+            } catch {
+                success = false
+                throw new ScriptGenerationError('Script generation failed: response was truncated on both attempts')
+            }
+        }
+
         const result = ScriptSchema.safeParse(parsed)
 
         if (!result.success) {
-            retryCount = 1
-            const retryMessage = userMessage + `\n\nYour previous response failed validation with this error: ${result.error.message}\nFix it and respond with valid JSON only.`
-            const retryResponse = await model.generateContent(retryMessage)
-            const retryText = retryResponse.response.text()
-            const retryParsed = JSON.parse(retryText)
-            const retryResult = ScriptSchema.safeParse(retryParsed)
+            if (retryCount === 0) {
+                retryCount = 1
+                const retryMessage = userMessage + `\n\nYour previous response failed validation with this error: ${result.error.message}\nFix it and respond with valid JSON only.`
+                const retryResponse = await model.generateContent(retryMessage)
+                const retryText = retryResponse.response.text()
+                const retryParsed = JSON.parse(retryText)
+                const retryResult = ScriptSchema.safeParse(retryParsed)
 
-            if (!retryResult.success) {
-                success = false
-                throw new ScriptGenerationError(`Script generation failed after retry: ${retryResult.error.message}`)
+                if (!retryResult.success) {
+                    success = false
+                    throw new ScriptGenerationError(`Script generation failed after retry: ${retryResult.error.message}`)
+                }
+
+                return retryResult.data
             }
-
-            return retryResult.data
+            success = false
+            throw new ScriptGenerationError(`Script generation failed after retry: ${result.error.message}`)
         }
 
         return result.data

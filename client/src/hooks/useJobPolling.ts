@@ -22,7 +22,7 @@ export function useJobPolling(jobId: string | null) {
       try {
         const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/jobs/${jobId}`)
         setJob(res.data)
-        if (['complete', 'failed', 'script_only_complete'].includes(res.data.status)) {
+        if (['complete', 'failed'].includes(res.data.status)) {
           clearInterval(interval)
         }
       } catch {

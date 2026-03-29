@@ -14,18 +14,17 @@
   <!-- Front camera dot inside dynamic island -->
   <circle id="front_camera" cx="225" cy="75" r="5" fill="#1e293b" stroke="#475569" stroke-width="1"/>
 
-  <!-- Power / Side button (right side) - label 1 -->
+  <!-- Power / Side button (right side) -->
   <rect id="power_button" x="290" y="170" width="9" height="60" rx="4.5" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
 
-  <!-- SIM tray (right side, below power button) - label 4 -->
+  <!-- SIM tray (right side, below power button) -->
   <rect id="sim_tray" x="290" y="270" width="9" height="36" rx="4.5" fill="#334155" stroke="#64748b" stroke-width="1.5"/>
-  <!-- SIM tray notch -->
   <circle cx="294.5" cy="306" r="2" fill="#475569"/>
 
-  <!-- Volume up button (left side) - label 3 -->
+  <!-- Volume up button (left side) -->
   <rect id="volume_up" x="101" y="158" width="9" height="46" rx="4.5" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
 
-  <!-- Volume down button (left side) - label 2 -->
+  <!-- Volume down button (left side) -->
   <rect id="volume_down" x="101" y="218" width="9" height="46" rx="4.5" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
 
   <!-- Mute / Action button (left side, above volume) -->
@@ -42,5 +41,15 @@
   <circle cx="232" cy="473" r="2.5" fill="#334155"/>
   <circle cx="242" cy="473" r="2.5" fill="#334155"/>
   <circle cx="252" cy="473" r="2.5" fill="#334155"/>
+
+  <!-- Home button (bottom bezel zone — used as script target) -->
+  <circle id="home_button" cx="200" cy="455" r="14" fill="#1e293b" stroke="#475569" stroke-width="1.5"/>
+  <circle cx="200" cy="455" r="7" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+
+  <!-- Bluetooth icon zone (top-left of screen, used as script target) -->
+  <g id="bluetooth_icon" transform="translate(130, 90)">
+    <path d="M6 4 L12 10 L6 16 L12 22 M12 10 L6 16 M12 22 L6 16"
+          stroke="#6366f1" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+  </g>
 
 </svg>

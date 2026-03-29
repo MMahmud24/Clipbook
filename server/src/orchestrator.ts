@@ -1,6 +1,7 @@
 import { supabase } from './lib/supabase'
 import { analyzeImage } from './services/visionService'
 import { generateScript } from './services/scriptService'
+import { renderVideo } from './renderVideo'
 
 export async function runJob(jobId: string, inputImageUrl: string, manualContext: string = ''): Promise<void> {
   try {
@@ -21,7 +22,17 @@ export async function runJob(jobId: string, inputImageUrl: string, manualContext
 
     await supabase.from('jobs').update({
       script_json: script,
-      status: 'script_only_complete',
+      status: 'rendering',
+      updated_at: new Date().toISOString(),
+    }).eq('id', jobId)
+
+    // Phase 3 — Remotion render
+    const { outputVideoUrl, renderDurationMs } = await renderVideo(jobId, script as Record<string, unknown>)
+
+    await supabase.from('jobs').update({
+      output_video_url: outputVideoUrl,
+      render_duration_ms: renderDurationMs,
+      status: 'complete',
       updated_at: new Date().toISOString(),
     }).eq('id', jobId)
 
