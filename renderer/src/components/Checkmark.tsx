@@ -32,7 +32,7 @@ export const Checkmark: React.FC<Props> = ({ labelText, backgroundAsset }) => {
   })
 
   return (
-    <div style={{ width: '100%', height: '100%', position: 'relative', background: '#1a1a2e', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ width: '100%', height: '100%', position: 'relative', background: '#1e293b', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       {backgroundAsset}
 
       <div style={{ position: 'absolute', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 16 }}>

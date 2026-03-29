@@ -17,7 +17,7 @@ export const ZoomIn: React.FC<Props> = ({ durationInFrames, labelText, backgroun
   })
 
   return (
-    <div style={{ width: '100%', height: '100%', overflow: 'hidden', position: 'relative', background: '#1a1a2e' }}>
+    <div style={{ width: '100%', height: '100%', overflow: 'hidden', position: 'relative', background: '#1e293b' }}>
       <div style={{ transform: `scale(${scale})`, transformOrigin: 'center center', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         {backgroundAsset}
       </div>
