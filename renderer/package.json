@@ -1,0 +1,27 @@
+{
+  "name": "renderer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@remotion/cli": "^4.0.441",
+    "@remotion/renderer": "*",
+    "react": "*",
+    "react-dom": "*",
+    "remotion": "*"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.2"
+  }
+}
