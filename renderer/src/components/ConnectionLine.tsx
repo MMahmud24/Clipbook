@@ -1,3 +1,4 @@
+import React from 'react'
 import { useCurrentFrame, interpolate } from 'remotion'
 
 interface Props {
