@@ -3,7 +3,6 @@ export type AnimationType =
   | 'arrow_point'
   | 'slide_in_label'
   | 'progress_bar'
-  | 'zoom_in'
   | 'button_press'
   | 'connection_line'
   | 'checkmark'

@@ -6,7 +6,6 @@ import { HighlightPulse } from './HighlightPulse'
 import { ArrowPoint } from './ArrowPoint'
 import { SlideInLabel } from './SlideInLabel'
 import { ProgressBar } from './ProgressBar'
-import { ZoomIn } from './ZoomIn'
 import { ButtonPress } from './ButtonPress'
 import { ConnectionLine } from './ConnectionLine'
 import { Checkmark } from './Checkmark'
@@ -58,18 +57,6 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
           />
         )
 
-      case 'zoom_in':
-        return (
-          <ZoomIn
-            durationInFrames={durationInFrames}
-            targetObject={scene.target_object}
-            labelText={scene.label_text}
-            backgroundAsset={backgroundImg}
-            x={x}
-            y={y}
-          />
-        )
-
       case 'button_press':
         return (
           <ButtonPress
@@ -113,7 +100,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
 
   // highlight_pulse, arrow_point, slide_in_label, progress_bar manage
   // the background externally — render SVG at full opacity underneath.
-  // zoom_in, button_press, connection_line, checkmark receive backgroundAsset as a prop.
+  // button_press, connection_line, checkmark receive backgroundAsset as a prop.
   const needsExternalBackground =
     scene.animation_type === 'highlight_pulse' ||
     scene.animation_type === 'arrow_point' ||

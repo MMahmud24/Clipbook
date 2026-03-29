@@ -13,9 +13,9 @@ Rules:
 - narration: one continuous string, minimum 20 characters.
 - title: maximum 80 characters.
 - label_text: maximum 40 characters per scene.
-- animation_type must be exactly one of these eight values:
+- animation_type must be exactly one of these seven values:
     highlight_pulse | arrow_point | slide_in_label | progress_bar |
-    zoom_in | button_press | connection_line | checkmark
+    button_press | connection_line | checkmark
 - Do NOT invent new animation_type values.
 - If no text is detected, return an error JSON: { 'error': 'No text detected' }
 

@@ -67,7 +67,7 @@ export default function AuthPage({ onBack }: AuthPageProps) {
         </button>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <span style={{ color: '#fff', fontWeight: 800, fontSize: 16, letterSpacing: '-0.025em' }}>Clipbook</span>
+          <span style={{ color: '#fff', fontWeight: 800, fontSize: 16, letterSpacing: '-0.025em' }}>ClipBook</span>
         </div>
 
         <div style={{ width: 80 }} />
