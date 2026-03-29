@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" fill="none">
+
+  <!-- ── Main device body ── -->
+  <rect id="device_body" x="100" y="60" width="300" height="380" rx="20"
+        fill="#1e293b" stroke="#64748b" stroke-width="4"/>
+
+  <!-- ── Display / screen area ── -->
+  <rect id="screen" x="124" y="90" width="252" height="160" rx="10"
+        fill="#0f172a" stroke="#475569" stroke-width="2"/>
+  <!-- Screen inner glow hint -->
+  <rect x="134" y="100" width="232" height="140" rx="7"
+        fill="#0a1628" stroke="#1e3a5f" stroke-width="1"/>
+
+  <!-- ── Status LED (top right of screen) ── -->
+  <circle id="led" cx="355" cy="100" r="7"
+          fill="#22c55e" stroke="#16a34a" stroke-width="1.5"/>
+
+  <!-- ── Power button (top right of body) ── -->
+  <rect id="power_button" x="370" y="108" width="12" height="44" rx="6"
+        fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+  <circle cx="376" cy="130" r="4" fill="#6366f1" stroke="#818cf8" stroke-width="1"/>
+
+  <!-- ── Volume up button (left side) ── -->
+  <rect id="volume_up" x="88" y="140" width="12" height="36" rx="6"
+        fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+
+  <!-- ── Volume down button (left side) ── -->
+  <rect id="volume_down" x="88" y="190" width="12" height="36" rx="6"
+        fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+
+  <!-- ── Reset button (left side, recessed) ── -->
+  <rect id="reset_button" x="90" y="244" width="8" height="20" rx="4"
+        fill="#0f172a" stroke="#64748b" stroke-width="1.5"/>
+
+  <!-- ── Control panel area (below screen) ── -->
+  <rect x="124" y="270" width="252" height="100" rx="8"
+        fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Primary action button -->
+  <circle id="primary_button" cx="200" cy="320" r="22"
+          fill="#1e293b" stroke="#6366f1" stroke-width="2.5"/>
+  <circle cx="200" cy="320" r="12" fill="#0f172a" stroke="#4f46e5" stroke-width="1.5"/>
+
+  <!-- Secondary button -->
+  <circle id="secondary_button" cx="270" cy="320" r="16"
+          fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+  <circle cx="270" cy="320" r="8" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+
+  <!-- Tertiary button -->
+  <circle id="tertiary_button" cx="330" cy="320" r="16"
+          fill="#1e293b" stroke="#64748b" stroke-width="2"/>
+  <circle cx="330" cy="320" r="8" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+
+  <!-- ── Port panel (bottom of device) ── -->
+  <!-- Charging / main port -->
+  <rect id="charging_port" x="210" y="418" width="80" height="12" rx="6"
+        fill="#0a0f1a" stroke="#64748b" stroke-width="2"/>
+
+  <!-- Left port (USB / aux) -->
+  <rect id="port" x="124" y="420" width="48" height="10" rx="5"
+        fill="#0a0f1a" stroke="#64748b" stroke-width="1.5"/>
+
+  <!-- Right port (SD / SIM slot) -->
+  <rect id="slot" x="328" y="420" width="48" height="10" rx="5"
+        fill="#0a0f1a" stroke="#64748b" stroke-width="1.5"/>
+
+  <!-- ── Indicator row (bottom strip) ── -->
+  <circle cx="175" cy="450" r="5" fill="#334155" stroke="#475569" stroke-width="1"/>
+  <circle cx="200" cy="450" r="5" fill="#334155" stroke="#475569" stroke-width="1"/>
+  <circle cx="225" cy="450" r="5" fill="#334155" stroke="#475569" stroke-width="1"/>
+  <circle cx="250" cy="450" r="5" fill="#334155" stroke="#475569" stroke-width="1"/>
+  <circle cx="275" cy="450" r="5" fill="#334155" stroke="#475569" stroke-width="1"/>
+  <circle cx="300" cy="450" r="5" fill="#334155" stroke="#475569" stroke-width="1"/>
+  <circle cx="325" cy="450" r="5" fill="#334155" stroke="#475569" stroke-width="1"/>
+
+</svg>
