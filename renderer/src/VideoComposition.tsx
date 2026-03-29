@@ -1,5 +1,7 @@
 import { Composition } from 'remotion'
 import React from 'react'
+import HeadphonesSvg from './assets/headphones.svg'
+import SmartphoneSvg from './assets/smartphone.svg'
 import { HighlightPulse } from './components/HighlightPulse'
 import { ArrowPoint } from './components/ArrowPoint'
 import { SlideInLabel } from './components/SlideInLabel'
@@ -101,6 +103,30 @@ export const VideoComposition: React.FC = () => {
         component={() => (
           <div style={{ background: '#1e293b', width: '100%', height: '100%' }}>
             <Checkmark durationInFrames={90} targetObject="led" labelText="Complete!" backgroundAsset={null} />
+          </div>
+        )}
+        durationInFrames={90}
+        fps={30}
+        width={1280}
+        height={720}
+      />
+      <Composition
+        id="SmartphoneSvgPreview"
+        component={() => (
+          <div style={{ background: '#1e293b', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <img src={SmartphoneSvg} style={{ width: 640, height: 640, objectFit: 'contain' }} />
+          </div>
+        )}
+        durationInFrames={90}
+        fps={30}
+        width={1280}
+        height={720}
+      />
+      <Composition
+        id="HeadphonesSvgPreview"
+        component={() => (
+          <div style={{ background: '#1e293b', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <img src={HeadphonesSvg} style={{ width: 640, height: 640, objectFit: 'contain' }} />
           </div>
         )}
         durationInFrames={90}

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" fill="none">
+  <!-- Phone body -->
+  <rect id="phone_body" x="110" y="20" width="180" height="460" rx="36" fill="#1e293b" stroke="#64748b" stroke-width="4"/>
+
+  <!-- Inner screen bezel -->
+  <rect id="screen" x="122" y="52" width="156" height="396" rx="28" fill="#0f172a" stroke="#334155" stroke-width="1.5"/>
+
+  <!-- Dynamic Island -->
+  <rect id="dynamic_island" x="163" y="62" width="74" height="26" rx="13" fill="#0a0f1a" stroke="#475569" stroke-width="1.5"/>
+
+  <!-- Speaker (earpiece) inside dynamic island area -->
+  <rect x="181" y="71" width="38" height="7" rx="3.5" fill="#334155"/>
+
+  <!-- Front camera dot inside dynamic island -->
+  <circle id="front_camera" cx="225" cy="75" r="5" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+
+  <!-- Power / Side button (right side) - label 1 -->
+  <rect id="power_button" x="290" y="170" width="9" height="60" rx="4.5" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+
+  <!-- SIM tray (right side, below power button) - label 4 -->
+  <rect id="sim_tray" x="290" y="270" width="9" height="36" rx="4.5" fill="#334155" stroke="#64748b" stroke-width="1.5"/>
+  <!-- SIM tray notch -->
+  <circle cx="294.5" cy="306" r="2" fill="#475569"/>
+
+  <!-- Volume up button (left side) - label 3 -->
+  <rect id="volume_up" x="101" y="158" width="9" height="46" rx="4.5" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+
+  <!-- Volume down button (left side) - label 2 -->
+  <rect id="volume_down" x="101" y="218" width="9" height="46" rx="4.5" fill="#334155" stroke="#94a3b8" stroke-width="2"/>
+
+  <!-- Mute / Action button (left side, above volume) -->
+  <rect id="mute_switch" x="101" y="118" width="9" height="28" rx="4.5" fill="#334155" stroke="#64748b" stroke-width="1.5"/>
+
+  <!-- Charging port (bottom center) -->
+  <rect id="charging_port" x="182" y="468" width="36" height="10" rx="5" fill="#0a0f1a" stroke="#64748b" stroke-width="1.5"/>
+
+  <!-- Speaker grille dots (bottom left of port) -->
+  <circle cx="148" cy="473" r="2.5" fill="#334155"/>
+  <circle cx="158" cy="473" r="2.5" fill="#334155"/>
+  <circle cx="168" cy="473" r="2.5" fill="#334155"/>
+  <!-- Speaker grille dots (bottom right of port) -->
+  <circle cx="232" cy="473" r="2.5" fill="#334155"/>
+  <circle cx="242" cy="473" r="2.5" fill="#334155"/>
+  <circle cx="252" cy="473" r="2.5" fill="#334155"/>
+
+</svg>
