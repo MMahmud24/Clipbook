@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-export type JobStatus = 'pending' | 'processing' | 'script_ready' | 'rendering' | 'complete' | 'failed'
+export type JobStatus = 'pending' | 'processing' | 'script_ready' | 'script_only_complete' | 'rendering' | 'complete' | 'failed'
 
 export interface Job {
   id: string
@@ -22,7 +22,7 @@ export function useJobPolling(jobId: string | null) {
       try {
         const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/jobs/${jobId}`)
         setJob(res.data)
-        if (res.data.status === 'complete' || res.data.status === 'failed') {
+        if (['complete', 'failed', 'script_only_complete'].includes(res.data.status)) {
           clearInterval(interval)
         }
       } catch {

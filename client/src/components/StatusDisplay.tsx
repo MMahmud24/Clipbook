@@ -32,7 +32,7 @@ export default function StatusDisplay({ job, onReset }: StatusDisplayProps) {
     )
   }
 
-  if (job.status === 'script_ready') {
+  if (job.status === 'script_ready' || job.status === 'script_only_complete') {
     return (
       <div className="w-full max-w-md mx-auto p-6 flex flex-col gap-4">
         <div className="bg-green-50 border border-green-200 rounded-2xl p-4">

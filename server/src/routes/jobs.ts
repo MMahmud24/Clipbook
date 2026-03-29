@@ -58,7 +58,7 @@ router.post('/', upload.single('image'), async (req: Request, res: Response) => 
   res.status(202).json({ jobId })
 
   // Run pipeline fire-and-forget
-  runJob(jobId, inputImageUrl)
+  runJob(jobId, inputImageUrl, manualContext)
 })
 
 // GET /api/jobs/:id — poll job status

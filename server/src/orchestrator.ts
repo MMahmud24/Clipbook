@@ -1,11 +1,12 @@
 import { supabase } from './lib/supabase'
 import { analyzeImage } from './services/visionService'
+import { generateScript } from './services/scriptService'
 
-export async function runJob(jobId: string, inputImageUrl: string): Promise<void> {
+export async function runJob(jobId: string, inputImageUrl: string, manualContext: string = ''): Promise<void> {
   try {
     await supabase.from('jobs').update({ status: 'processing', updated_at: new Date().toISOString() }).eq('id', jobId)
 
-    // Step 1.3 — Vision OCR
+    // Phase 1 — Vision OCR
     const { detectedText, detectedObjects } = await analyzeImage(inputImageUrl, jobId)
 
     await supabase.from('jobs').update({
@@ -15,7 +16,15 @@ export async function runJob(jobId: string, inputImageUrl: string): Promise<void
       updated_at: new Date().toISOString(),
     }).eq('id', jobId)
 
-    // Step 2.2 — Gemini script generation wired in Phase 2
+    // Phase 2 — Gemini script generation
+    const script = await generateScript(detectedText, detectedObjects, manualContext, jobId)
+
+    await supabase.from('jobs').update({
+      script_json: script,
+      status: 'script_only_complete',
+      updated_at: new Date().toISOString(),
+    }).eq('id', jobId)
+
   } catch (err) {
     const message = err instanceof Error ? err.message : 'Unknown error'
     await supabase.from('jobs').update({
