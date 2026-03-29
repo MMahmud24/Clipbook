@@ -1,17 +1,50 @@
 import { Composition } from 'remotion'
 import React from 'react'
+import { ZoomIn } from './components/ZoomIn'
+import { ButtonPress } from './components/ButtonPress'
+import { ConnectionLine } from './components/ConnectionLine'
+import { Checkmark } from './components/Checkmark'
+
 
 export const VideoComposition: React.FC = () => {
   return (
-    <Composition
-      id="ClipbookVideo"
-      component={() => <div style={{ background: '#1e293b', width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <span style={{ color: 'white', fontSize: 48, fontFamily: 'sans-serif' }}>Clipbook</span>
-      </div>}
-      durationInFrames={150}
-      fps={30}
-      width={1280}
-      height={720}
-    />
+    <>
+      <Composition
+        id="ZoomIn"
+        component={ZoomIn as React.ComponentType<any>}
+        durationInFrames={90}
+        fps={30}
+        width={1280}
+        height={720}
+        defaultProps={TEST_PROPS}
+      />
+      <Composition
+        id="ButtonPress"
+        component={ButtonPress as React.ComponentType<any>}
+        durationInFrames={90}
+        fps={30}
+        width={1280}
+        height={720}
+        defaultProps={TEST_PROPS}
+      />
+      <Composition
+        id="ConnectionLine"
+        component={ConnectionLine as React.ComponentType<any>}
+        durationInFrames={90}
+        fps={30}
+        width={1280}
+        height={720}
+        defaultProps={TEST_PROPS}
+      />
+      <Composition
+        id="Checkmark"
+        component={Checkmark as React.ComponentType<any>}
+        durationInFrames={90}
+        fps={30}
+        width={1280}
+        height={720}
+        defaultProps={TEST_PROPS}
+      />
+    </>
   )
 }
