@@ -21,7 +21,7 @@ export default function Navbar({ email, onSignOut, onHome }: NavbarProps) {
         display: 'flex', alignItems: 'center', gap: 8, padding: 0,
         fontFamily: 'inherit',
       }}>
-        <span style={{ fontWeight: 800, fontSize: 15, letterSpacing: '-0.025em', color: '#0A0D14' }}>Clipbook</span>
+        <span style={{ fontWeight: 800, fontSize: 15, letterSpacing: '-0.025em', color: '#0A0D14' }}>ClipBook</span>
       </button>
 
       {/* Right */}

@@ -174,7 +174,7 @@ export default function LandingPage({ onGetStarted, onSignIn }: LandingPageProps
       }}>
         {/* Logo */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
-          <span style={{ color: '#fff', fontWeight: 800, fontSize: 17, letterSpacing: '-0.025em' }}>Clipbook</span>
+          <span style={{ color: '#fff', fontWeight: 800, fontSize: 17, letterSpacing: '-0.025em' }}>ClipBook</span>
         </div>
 
         {/* Center nav links */}

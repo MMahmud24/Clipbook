@@ -14,7 +14,7 @@ export class ScriptGenerationError extends Error {
 
 export async function generateScript(ocrText: string, detectedObjects: string[], manualContext: string, jobId: string): Promise<Script> {
     const model = genAI.getGenerativeModel({
-        model: 'gemini-2.5-flash',
+        model: 'gemini-2.5-flash-lite',
         systemInstruction: SCRIPT_SYSTEM_PROMPT,
         generationConfig: {
             temperature: 0.2,
