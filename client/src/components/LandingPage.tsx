@@ -182,8 +182,11 @@ export default function LandingPage({ onGetStarted, onSignIn }: LandingPageProps
           position: 'absolute', left: '50%', transform: 'translateX(-50%)',
           display: 'flex', gap: 36,
         }}>
-          {['How it works', 'Our Tools'].map(l => (
-            <button key={l} style={{
+          {[
+            { label: 'How it works', target: 'how-it-works' },
+            { label: 'Our Tools',    target: 'our-tools' },
+          ].map(({ label, target }) => (
+            <button key={label} onClick={() => document.getElementById(target)?.scrollIntoView({ behavior: 'smooth' })} style={{
               background: 'none', border: 'none',
               color: 'rgba(255,255,255,0.6)', fontSize: 14, fontWeight: 500,
               cursor: 'pointer', padding: 0,
@@ -193,7 +196,7 @@ export default function LandingPage({ onGetStarted, onSignIn }: LandingPageProps
               onMouseOver={e => (e.currentTarget.style.color = '#fff')}
               onMouseOut={e => (e.currentTarget.style.color = 'rgba(255,255,255,0.6)')}
             >
-              {l}
+              {label}
             </button>
           ))}
         </div>
@@ -295,7 +298,7 @@ export default function LandingPage({ onGetStarted, onSignIn }: LandingPageProps
       </section>
 
       {/* ══════════════════════ HOW IT WORKS (cream) ══════════════════════ */}
-      <section style={{ background: '#EDE8E0', padding: '100px 64px' }}>
+      <section id="how-it-works" style={{ background: '#EDE8E0', padding: '100px 64px' }}>
         <div style={{ maxWidth: 1220, margin: '0 auto' }}>
           {/* Section label */}
           <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', color: 'rgba(0,0,0,0.35)', textTransform: 'uppercase', marginBottom: 16 }}>
@@ -361,7 +364,7 @@ export default function LandingPage({ onGetStarted, onSignIn }: LandingPageProps
       </section>
 
       {/* ══════════════════════ FEATURES (dark) ══════════════════════ */}
-      <section style={{ background: '#060A15', padding: '100px 64px' }}>
+      <section id="our-tools" style={{ background: '#060A15', padding: '100px 64px' }}>
         <div style={{ maxWidth: 1220, margin: '0 auto' }}>
           <div style={{
             display: 'flex', alignItems: 'flex-end',
