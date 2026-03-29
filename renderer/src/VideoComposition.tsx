@@ -16,7 +16,12 @@ export const VideoComposition: React.FC = () => {
         fps={30}
         width={1280}
         height={720}
-        defaultProps={TEST_PROPS}
+        defaultProps={{
+          durationInFrames: 90,
+          targetObject: 'power_button',
+          labelText: 'Test Label',
+          backgroundAsset: null,
+        }}
       />
       <Composition
         id="ButtonPress"
@@ -25,7 +30,12 @@ export const VideoComposition: React.FC = () => {
         fps={30}
         width={1280}
         height={720}
-        defaultProps={TEST_PROPS}
+        defaultProps={{
+          durationInFrames: 90,
+          targetObject: 'power_button',
+          labelText: 'Test Label',
+          backgroundAsset: null,
+        }}
       />
       <Composition
         id="ConnectionLine"
@@ -34,7 +44,12 @@ export const VideoComposition: React.FC = () => {
         fps={30}
         width={1280}
         height={720}
-        defaultProps={TEST_PROPS}
+        defaultProps={{
+          durationInFrames: 90,
+          targetObject: 'power_button',
+          labelText: 'Test Label',
+          backgroundAsset: null,
+        }}
       />
       <Composition
         id="Checkmark"
@@ -43,7 +58,13 @@ export const VideoComposition: React.FC = () => {
         fps={30}
         width={1280}
         height={720}
-        defaultProps={TEST_PROPS}
+        defaultProps={{
+          durationInFrames: 90,
+          targetObject: 'power_button',
+          labelText: 'Test Label',
+          backgroundAsset: null,
+        }}
+
       />
     </>
   )
