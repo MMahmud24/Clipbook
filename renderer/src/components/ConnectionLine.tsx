@@ -6,11 +6,13 @@ interface Props {
   targetObject: string
   labelText: string
   backgroundAsset: React.ReactNode
+  x?: number
+  y?: number
 }
 
 const PATH_LENGTH = 300
 
-export const ConnectionLine: React.FC<Props> = ({ labelText, backgroundAsset }) => {
+export const ConnectionLine: React.FC<Props> = ({ labelText, backgroundAsset, x = 50, y = 50 }) => {
   const frame = useCurrentFrame()
 
   // strokeDashoffset animates from full path length to 0 over 40 frames (drawing-in effect)
@@ -19,13 +21,38 @@ export const ConnectionLine: React.FC<Props> = ({ labelText, backgroundAsset }) 
     extrapolateRight: 'clamp',
   })
 
+  const labelOpacity = interpolate(frame, [30, 45], [0, 1], {
+    extrapolateLeft: 'clamp',
+    extrapolateRight: 'clamp',
+  })
+
+  // Target point in canvas pixels (1280x720)
+  const tx = (x / 100) * 1280
+  const ty = (y / 100) * 720
+
+  // Source point: offset 200px left and 80px up from target (so line draws TO target)
+  const sx = tx - 200
+  const sy = ty - 80
+
+  // Control point for quadratic bezier — midpoint shifted up
+  const cx = (sx + tx) / 2
+  const cy = Math.min(sy, ty) - 60
+
+  // Label placement: above target if target is in bottom half, below if in top half
+  const labelBelow = y < 50
+  const labelOffsetY = labelBelow ? 48 : -48
+
   return (
-    <div style={{ width: '100%', height: '100%', position: 'relative', background: '#1e293b', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+    <div style={{ width: '100%', height: '100%', position: 'relative', background: '#1e293b' }}>
       {backgroundAsset}
 
-      <svg width="400" height="200" style={{ position: 'absolute' }}>
+      <svg
+        width="1280"
+        height="720"
+        style={{ position: 'absolute', top: 0, left: 0, pointerEvents: 'none' }}
+      >
         <path
-          d="M 50 100 Q 200 20 350 100"
+          d={`M ${sx} ${sy} Q ${cx} ${cy} ${tx} ${ty}`}
           fill="none"
           stroke="#4a90e2"
           strokeWidth={3}
@@ -33,12 +60,31 @@ export const ConnectionLine: React.FC<Props> = ({ labelText, backgroundAsset }) 
           strokeDashoffset={dashOffset}
           strokeLinecap="round"
         />
-        {/* Anchor dots */}
-        <circle cx={50} cy={100} r={6} fill="#4a90e2" />
-        <circle cx={350} cy={100} r={6} fill="#4a90e2" />
+        {/* Source dot */}
+        <circle cx={sx} cy={sy} r={6} fill="#4a90e2" opacity={interpolate(frame, [0, 10], [0, 1], { extrapolateRight: 'clamp' })} />
+        {/* Target dot */}
+        <circle cx={tx} cy={ty} r={8} fill="#4a90e2" opacity={interpolate(frame, [35, 45], [0, 1], { extrapolateRight: 'clamp' })} />
       </svg>
 
-      <div style={{ position: 'absolute', bottom: 40, left: '50%', transform: 'translateX(-50%)', background: 'rgba(0,0,0,0.6)', color: 'white', padding: '8px 20px', borderRadius: 20, fontSize: 22, fontFamily: 'sans-serif' }}>
+      {/* Label near target */}
+      <div
+        style={{
+          position: 'absolute',
+          left: `${x}%`,
+          top: `${y}%`,
+          transform: `translate(-50%, calc(-50% + ${labelOffsetY}px))`,
+          background: 'rgba(74,144,226,0.9)',
+          color: 'white',
+          padding: '8px 20px',
+          borderRadius: 999,
+          fontSize: 22,
+          fontFamily: 'sans-serif',
+          fontWeight: 600,
+          whiteSpace: 'nowrap',
+          opacity: labelOpacity,
+          boxShadow: '0 2px 12px rgba(0,0,0,0.4)',
+        }}
+      >
         {labelText}
       </div>
     </div>

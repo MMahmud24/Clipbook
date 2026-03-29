@@ -17,4 +17,14 @@ Rules:
     highlight_pulse | arrow_point | slide_in_label | progress_bar |
     zoom_in | button_press | connection_line | checkmark
 - Do NOT invent new animation_type values.
-- If no text is detected, return an error JSON: { 'error': 'No text detected' }`
+- If no text is detected, return an error JSON: { 'error': 'No text detected' }
+
+background_asset selection — you MUST use exactly one of these five values:
+- "headphones_svg"    — use when the product is headphones, earphones, earbuds, or any over-ear/in-ear audio device
+- "smartphone_svg"    — use when the product is a smartphone, mobile phone, iPhone, or Android device
+- "router_svg"        — use when the product is a Wi-Fi router, modem, network hub, or any networking device
+- "smart_speaker_svg" — use when the product is a smart speaker or voice assistant device (e.g. Echo, Google Home)
+- "generic_device"    — use ONLY when the product does not match any of the above categories
+
+Every scene in the same script MUST use the same background_asset value.
+Choose based on the detected objects and OCR text. When in doubt, match the closest category rather than defaulting to generic_device.`

@@ -1,6 +1,7 @@
 import React from 'react'
 import { ScriptScene } from '../types/script'
 import { getAsset } from '../assets/assetMap'
+import { getCoord } from '../assets/targetCoordinates'
 import { HighlightPulse } from './HighlightPulse'
 import { ArrowPoint } from './ArrowPoint'
 import { SlideInLabel } from './SlideInLabel'
@@ -22,9 +23,9 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
   durationInFrames,
 }) => {
   const assetSrc = getAsset(scene.background_asset)
+  const { x, y } = getCoord(scene.background_asset, scene.target_object)
 
-  // Background SVG element passed to components that accept it
-  const backgroundElement = (
+  const backgroundImg = (
     <img
       src={assetSrc}
       style={{
@@ -38,17 +39,16 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
     />
   )
 
-  // Render the correct animation component for this scene
   const renderAnimation = () => {
     switch (scene.animation_type) {
       case 'highlight_pulse':
-        return <HighlightPulse labelText={scene.label_text} />
+        return <HighlightPulse labelText={scene.label_text} x={x} y={y} />
 
       case 'arrow_point':
-        return <ArrowPoint labelText={scene.label_text} />
+        return <ArrowPoint labelText={scene.label_text} x={x} y={y} />
 
       case 'slide_in_label':
-        return <SlideInLabel labelText={scene.label_text} />
+        return <SlideInLabel labelText={scene.label_text} x={x} y={y} />
 
       case 'progress_bar':
         return (
@@ -64,7 +64,9 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
             durationInFrames={durationInFrames}
             targetObject={scene.target_object}
             labelText={scene.label_text}
-            backgroundAsset={backgroundElement}
+            backgroundAsset={backgroundImg}
+            x={x}
+            y={y}
           />
         )
 
@@ -74,7 +76,9 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
             durationInFrames={durationInFrames}
             targetObject={scene.target_object}
             labelText={scene.label_text}
-            backgroundAsset={backgroundElement}
+            backgroundAsset={backgroundImg}
+            x={x}
+            y={y}
           />
         )
 
@@ -84,7 +88,9 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
             durationInFrames={durationInFrames}
             targetObject={scene.target_object}
             labelText={scene.label_text}
-            backgroundAsset={backgroundElement}
+            backgroundAsset={backgroundImg}
+            x={x}
+            y={y}
           />
         )
 
@@ -94,7 +100,9 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
             durationInFrames={durationInFrames}
             targetObject={scene.target_object}
             labelText={scene.label_text}
-            backgroundAsset={backgroundElement}
+            backgroundAsset={backgroundImg}
+            x={x}
+            y={y}
           />
         )
 
@@ -103,9 +111,9 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
     }
   }
 
-  // For components that manage their own background internally (zoom_in, button_press,
-  // connection_line, checkmark), render them directly.
-  // For the rest, layer the SVG underneath.
+  // highlight_pulse, arrow_point, slide_in_label, progress_bar manage
+  // the background externally — render SVG at full opacity underneath.
+  // zoom_in, button_press, connection_line, checkmark receive backgroundAsset as a prop.
   const needsExternalBackground =
     scene.animation_type === 'highlight_pulse' ||
     scene.animation_type === 'arrow_point' ||
@@ -132,7 +140,7 @@ export const SceneRenderer: React.FC<SceneRendererProps> = ({
             width: '100%',
             height: '100%',
             objectFit: 'contain',
-            opacity: 0.4,
+            opacity: 0.5,
           }}
         />
       )}
