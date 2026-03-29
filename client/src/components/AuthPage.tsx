@@ -67,15 +67,6 @@ export default function AuthPage({ onBack }: AuthPageProps) {
         </button>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <div style={{
-            width: 28, height: 28, borderRadius: 8, background: '#2563EB',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-              <path d="M2 5.5h7M2 8h10M2 10.5h5" stroke="white" strokeWidth="1.7" strokeLinecap="round"/>
-              <circle cx="12" cy="5.5" r="2" fill="white"/>
-            </svg>
-          </div>
           <span style={{ color: '#fff', fontWeight: 800, fontSize: 16, letterSpacing: '-0.025em' }}>Clipbook</span>
         </div>
 

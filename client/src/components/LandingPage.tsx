@@ -1,3 +1,5 @@
+import { useRef } from 'react'
+
 interface LandingPageProps {
   onGetStarted: () => void
   onSignIn: () => void
@@ -163,7 +165,7 @@ export default function LandingPage({ onGetStarted, onSignIn }: LandingPageProps
   return (
     <div style={{ fontFamily: '"Plus Jakarta Sans", system-ui, sans-serif' }}>
 
-      {/* ══════════════════════ NAVBAR ══════════════════════ */}
+      {/* Navbar */}
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 200,
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
@@ -172,16 +174,6 @@ export default function LandingPage({ onGetStarted, onSignIn }: LandingPageProps
       }}>
         {/* Logo */}
         <div style={{ display: 'flex', alignItems: 'center', gap: 9 }}>
-          <div style={{
-            width: 30, height: 30, borderRadius: 9,
-            background: '#2563EB',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M2 5.5h7M2 8h10M2 10.5h5" stroke="white" strokeWidth="1.6" strokeLinecap="round"/>
-              <circle cx="12" cy="5.5" r="2" fill="white"/>
-            </svg>
-          </div>
           <span style={{ color: '#fff', fontWeight: 800, fontSize: 17, letterSpacing: '-0.025em' }}>Clipbook</span>
         </div>
 
@@ -190,7 +182,7 @@ export default function LandingPage({ onGetStarted, onSignIn }: LandingPageProps
           position: 'absolute', left: '50%', transform: 'translateX(-50%)',
           display: 'flex', gap: 36,
         }}>
-          {['Features', 'How it works', 'Pricing', 'About'].map(l => (
+          {['How it works', 'Our Tools'].map(l => (
             <button key={l} style={{
               background: 'none', border: 'none',
               color: 'rgba(255,255,255,0.6)', fontSize: 14, fontWeight: 500,
@@ -239,13 +231,6 @@ export default function LandingPage({ onGetStarted, onSignIn }: LandingPageProps
           position: 'relative',
           zIndex: 1,
         }}>
-          {/* Badge */}
-          <div style={{ marginBottom: 36 }}>
-            <span className="hero-badge">
-              <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#60A5FA', display: 'inline-block', flexShrink: 0 }} />
-              AI-powered tutorial generator
-            </span>
-          </div>
 
           {/* Headline */}
           <h1 style={{
@@ -291,10 +276,6 @@ export default function LandingPage({ onGetStarted, onSignIn }: LandingPageProps
             display: 'flex', alignItems: 'center', gap: 8,
             marginTop: 32, color: 'rgba(255,255,255,0.45)', fontSize: 13.5, fontWeight: 500,
           }}>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-              <path d="M7 1l1.8 3.6 4 .58-2.9 2.82.69 3.98L7 10.1l-3.59 1.88.69-3.98L1.2 5.18l4-.58L7 1z" fill="#FBBF24" stroke="#FBBF24" strokeWidth="0.5" strokeLinejoin="round"/>
-            </svg>
-            <span>4.8 / 5 rating</span>
             <span style={{ margin: '0 6px', opacity: 0.3 }}>·</span>
             <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
               <path d="M6.5 1v11M3 4l3.5-3L10 4M1 9.5h11" stroke="rgba(255,255,255,0.45)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
@@ -434,76 +415,6 @@ export default function LandingPage({ onGetStarted, onSignIn }: LandingPageProps
         </div>
       </section>
 
-      {/* ══════════════════════ CTA (cream) ══════════════════════ */}
-      <section style={{ background: '#EDE8E0', padding: '100px 64px' }}>
-        <div style={{
-          maxWidth: 1220, margin: '0 auto',
-          background: '#060A15',
-          borderRadius: 28,
-          padding: '80px 72px',
-          position: 'relative',
-          overflow: 'hidden',
-        }}>
-          {/* Inner orb */}
-          <div style={{
-            position: 'absolute', top: '50%', left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: 700, height: 400,
-            background: 'radial-gradient(ellipse, rgba(37,99,235,0.28) 0%, transparent 65%)',
-            pointerEvents: 'none',
-          }} />
-
-          <span className="sparkle" style={{ top: 24, left: 32 }}>+</span>
-          <span className="sparkle" style={{ bottom: 24, right: 48, fontSize: 18 }}>+</span>
-
-          <div style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
-            <p style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.1em', color: 'rgba(255,255,255,0.3)', textTransform: 'uppercase', marginBottom: 20 }}>
-              Get started today
-            </p>
-            <h2 style={{
-              fontSize: 'clamp(32px, 5vw, 58px)',
-              fontWeight: 800, letterSpacing: '-0.04em', color: '#fff',
-              lineHeight: 1.06, marginBottom: 20,
-            }}>
-              Your first tutorial,<br/>completely free.
-            </h2>
-            <p style={{ color: 'rgba(255,255,255,0.42)', fontSize: 16, marginBottom: 44, lineHeight: 1.6 }}>
-              No credit card. No setup. Just photograph a step and go.
-            </p>
-            <button onClick={onGetStarted} className="cta-pill" style={{ fontSize: 16 }}>
-              Create your first video
-              <span className="arrow">
-                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                  <path d="M2 6h8M7 3l3 3-3 3" stroke="#060A15" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </span>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════ FOOTER ══════════════════════ */}
-      <footer style={{
-        background: '#EDE8E0',
-        borderTop: '1px solid rgba(0,0,0,0.07)',
-        padding: '28px 64px',
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-          <div style={{
-            width: 24, height: 24, borderRadius: 7, background: '#2563EB',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-              <path d="M2 5.5h7M2 8h10M2 10.5h5" stroke="white" strokeWidth="1.6" strokeLinecap="round"/>
-              <circle cx="12" cy="5.5" r="2" fill="white"/>
-            </svg>
-          </div>
-          <span style={{ fontWeight: 700, fontSize: 14, color: '#374151', letterSpacing: '-0.02em' }}>Clipbook</span>
-          <span style={{ color: 'rgba(0,0,0,0.25)', fontSize: 13, marginLeft: 8 }}>© 2026</span>
-        </div>
-        <span style={{ color: 'rgba(0,0,0,0.3)', fontSize: 12, fontWeight: 500 }}>Built at YHack 2026</span>
-      </footer>
     </div>
   )
 }
