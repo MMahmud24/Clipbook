@@ -1,13 +1,16 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 
-const mockGenerateContent = vi.fn()
+const mockGenerateContent = vi.hoisted(() => vi.fn())
 
 vi.mock('@google/generative-ai', () => ({
-    GoogleGenerativeAI: vi.fn().mockImplementation(() => ({
-        getGenerativeModel: vi.fn().mockReturnValue({
-            generateContent: mockGenerateContent
-        })
-    }))
+    GoogleGenerativeAI: vi.fn().mockImplementation(function() {
+        return {
+            getGenerativeModel: vi.fn().mockReturnValue({
+                generateContent: mockGenerateContent
+            })
+        }
+        
+    })
 }))
 
 import { generateScript } from '../services/scriptService.js'

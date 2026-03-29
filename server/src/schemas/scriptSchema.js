@@ -11,7 +11,7 @@ const SceneSchema = z.object({
     background_asset:   z.string().max(80),
 })
 
-const ScriptSchema = z.object({
+export const ScriptSchema = z.object({
     title:              z.string().max(80),
     product_category:   z.string(),
     duration_seconds:   z.number().int().min(10).max(120),
