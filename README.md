@@ -1,6 +1,10 @@
 # Clipbook
 YHack 2026 — Transforms instruction manual photos into animated video tutorials.
 
+# Devpost Link
+
+https://devpost.com/software/clipbook-xars14?ref_content=user-portfolio&ref_feature=in_progress
+
 ## Setup
 
 **Requirements:** Node.js 20+, npm
